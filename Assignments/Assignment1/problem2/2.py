@@ -16,11 +16,17 @@ def mean_squared_error(theta, X, y):
     return 1 / (2 * len(y)) * np.sum((y - y_pred) ** 2) 
 
 def mse_gradient(theta, X, y):
-    # [your work!]
-
-    grads = np.stack([theta0-3, (2*theta1-2)*2], axis=1)
-        grads = grads.reshape([len(theta0), 2])
-        return grads
+    # [your work!] n
+    # return np.sum((f(theta, X) - y) * X.T, axis=1).values # vs np.mean
+    n = np.size(y)
+    x0 = np.mean(X.iloc[:,0])
+    x1 = np.mean(X.iloc[:,1]) # dimension d  
+    
+    # print("Aa",np.mean(X, axis = 0))
+    # print("b",np.sum((f(theta, X) - y).values))
+    # print("aa",np.sum((f(theta, X) - y).values) *  np.mean(X.values, axis = 0))
+    return np.mean((f(theta, X) - y).values) *  np.array([0, x0, x1, x0*x1, x0**2, x1**2])
+ 
 # Load the diabetes dataset
 X, y = datasets.load_diabetes(return_X_y=True, as_frame=True)
 # Collect 20 data points and use bmi and bp dimension
@@ -30,6 +36,9 @@ y_train = y.iloc[-20:] / 300
 tolerance = 1e-6
 step_size = 4e-1
 theta, theta_prev = np.array([0,0,0,0,0,0]), np.array([1,1,1,1,1,1])
+mse_gradient(theta, X_train, y_train)
+
+
 iter = 0
 # [your work!]
 opt_pts = [theta]
@@ -43,8 +52,6 @@ while np.linalg.norm(theta - theta_prev) > tolerance:
         theta_mid = theta
     theta_prev = theta
     gradient = mse_gradient(theta, X_train, y_train)
-    print(gradient)
-    print(theta)
     theta = theta_prev - step_size * gradient
     opt_pts += [theta]
     opt_grads += [gradient]

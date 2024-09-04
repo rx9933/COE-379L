@@ -17,7 +17,7 @@ def mean_squared_error(theta, X, y):
 
 def mse_gradient(theta, X, y):
     # [your work!]
-    return np.sum((f(theta, X) - y) * X.T, axis=1).values # vs np.mean
+    return np.mean((f(theta, X) - y) * X.T, axis=1).values # vs np.sum
 
 # Load the diabetes dataset
 X, y = datasets.load_diabetes(return_X_y=True, as_frame=True)
