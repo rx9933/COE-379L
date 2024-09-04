@@ -8,7 +8,7 @@ from sklearn import datasets
 def f(theta, X):
     # [your work!]
     return theta[0] + theta[1] * X.iloc[:, 0] + theta[2] * X.iloc[:, 1] + \
-        theta[3] * X.iloc[:, 0] * X.iloc[:, 1] + theta[4] * X.iloc[:, 0]**2 + theta[5] * X.iloc[:, 0]**2
+        theta[3] * X.iloc[:, 0] * X.iloc[:, 1] + theta[4] * X.iloc[:, 0]**2 + theta[5] * X.iloc[:, 1]**2
 
 def mean_squared_error(theta, X, y):
     # [your work!]
