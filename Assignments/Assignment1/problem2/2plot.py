@@ -33,24 +33,25 @@ X, y = datasets.load_diabetes(return_X_y=True, as_frame=True)
 X_train = X.iloc[-20:].loc[:, ['bmi', 'bp']]
 y_train = y.iloc[-20:] / 300
 
-tolerance = 1e-6
-step_size = 4e-1 *4
-theta, theta_prev = np.zeros(6), np.ones(6)
+def grad_descent(n):
+    tolerance = 1e-6
+    step_size = 4e-1 *n
+    theta, theta_prev = np.zeros(6), np.ones(6)
 
-iter = 0
-opt_pts = [theta]
-opt_grads = []
+    iter = 0
+    opt_pts = [theta]
+    opt_grads = []
 
-while np.linalg.norm(theta - theta_prev) > tolerance:
-    if iter > 200000:
-        break
-    if iter % 100 == 0:
-        print('Iteration %d. MSE: %.6f TOL: %.7f' % (iter, mean_squared_error(theta, X_train, y_train),np.linalg.norm(theta - theta_prev)))
-    theta_prev = theta
-    gradient = mse_gradient(theta, X_train, y_train)
-    theta = theta_prev - step_size * gradient
-    opt_pts += [theta]
-    opt_grads += [gradient]
-    iter += 1
+    while np.linalg.norm(theta - theta_prev) > tolerance:
+        if iter > 200000:
+            break
+        if iter % 100 == 0:
+            print('Iteration %d. MSE: %.6f TOL: %.7f' % (iter, mean_squared_error(theta, X_train, y_train),np.linalg.norm(theta - theta_prev)))
+        theta_prev = theta
+        gradient = mse_gradient(theta, X_train, y_train)
+        theta = theta_prev - step_size * gradient
+        opt_pts += [theta]
+        opt_grads += [gradient]
+        iter += 1
 
-print("Optimal Theta:", theta)
+print("Optimal Theta:", grad_descent(1))
