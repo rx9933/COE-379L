@@ -80,7 +80,7 @@ for theta0_pt, theta1_pt, df0 in zip(thetas[:,0],thetas[:,1], J_grad):
                  xy=(theta0_pt-line_length*df0[0],
                      theta1_pt-line_length*df0[1]),
                  arrowprops={'arrowstyle': '->', 'lw': .5}, va='center', ha='center')
-
+plt.xlim([0,4])
 # Display the plot
 plt.xlabel('theta0')
 plt.ylabel('theta1')

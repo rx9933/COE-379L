@@ -54,3 +54,5 @@ while np.linalg.norm(theta - theta_prev) > tolerance:
     iter += 1
 
 print("Optimal Theta:", theta)
+
+print(mse_gradient(theta, X_train, y_train))

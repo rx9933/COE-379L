@@ -34,7 +34,7 @@ X_train = X.iloc[-20:].loc[:, ['bmi', 'bp']]
 y_train = y.iloc[-20:] / 300
 
 def grad_descent(n):
-    tolerance = 1e-6
+    tolerance = 1e-4
     step_size = 4e-1 *n
     theta, theta_prev = np.zeros(6), np.ones(6)
 
@@ -53,5 +53,5 @@ def grad_descent(n):
         opt_pts += [theta]
         opt_grads += [gradient]
         iter += 1
-
+    return theta
 print("Optimal Theta:", grad_descent(1))
