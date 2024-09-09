@@ -28,5 +28,5 @@ print("Theta (Normal Equations with bias):", theta_normal_eq)
 X = X_train.values
 y = y_train.values
 print(np.linalg.inv(X.T @ X))
-theta = np.linalg.inv(X.T @ X) @ X.T @ y
+theta = np.linalg.inv(X.T @ X) @ X.T @ y 
 print(theta)

@@ -35,6 +35,6 @@ print("Theta:", theta)
 # Check the mean squared error
 mse = mean_squared_error(theta, X_design, y_train)
 print("Mean Squared Error:", mse)
-print(mse_gradient(theta, X_design, y_train))
+print("MSE gradient",mse_gradient(theta, X_design, y_train))
 """[ 3.58727465e-02 -3.30362548e-03  1.07121871e-03 -1.62327841e-04
  -1.32860642e-04 -6.75559160e-05]"""
