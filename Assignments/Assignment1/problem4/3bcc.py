@@ -37,7 +37,7 @@ X_train_poly = create_polynomial_features(X_train)
 X_train_poly_transpose = X_train_poly.T
 # theta = np.linalg.inv(X_train_poly_transpose.dot(X_train_poly)).dot(X_train_poly_transpose).dot(y_train)
 
-theta = np.linalg.solve(np.matmul(X_train_poly.T, X_train_poly), np.matmul(X_train_poly.T, y_train))
+theta = np.linalg.solve(np.matmul(X_train_poly.T, X_train_poly) + .1*np.eye(X_train_poly.shape[1]), np.matmul(X_train_poly.T, y_train))
 
 print(f"Parameters obtained from least squares: {theta}")
 

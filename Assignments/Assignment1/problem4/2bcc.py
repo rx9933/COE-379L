@@ -10,7 +10,7 @@ def f(theta, X):
 
 def mean_squared_error(theta, X, y):
     y_pred = f(theta, X)
-    return 1 / (2 * len(y)) * np.sum((y - y_pred) ** 2) 
+    return 1 / (2 * len(y)) * np.sum((y - y_pred) ** 2)  + .01/2*np.linalg.norm(theta)**2
 
 def mse_gradient(theta, X, y):
     y_pred = f(theta, X)
@@ -25,7 +25,7 @@ def mse_gradient(theta, X, y):
     gradients[5] = np.mean(error * X.iloc[:, 1]**2)
 
     
-    return gradients
+    return gradients + .01*theta
 
 # Load the diabetes dataset
 X, y = datasets.load_diabetes(return_X_y=True, as_frame=True)
@@ -62,6 +62,9 @@ while np.linalg.norm(theta - theta_prev) > tolerance:
     iter += 1
 
 print("Optimal Theta:", theta)
+print(mean_squared_error(theta, X_train, y_train))
+print(mean_squared_error(theta, X_train, y_train) - .01/2 * np.linalg.norm(theta)**2)
+
 # print('Iteration %d. MSE: %.6f TOL: %.7f' % (iter, mean_squared_error(theta, X_train, y_train),np.linalg.norm(theta - theta_prev)))
 
 def create_polynomial_features(X):
