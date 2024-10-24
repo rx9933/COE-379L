@@ -1,3 +1,4 @@
+```bash
 import numpy as np
 import pandas as pd
 from sklearn.datasets import fetch_20newsgroups
@@ -36,3 +37,4 @@ print(classification_report(y_test_split, y_pred_nb, target_names=twenty_train.t
 print("Logistic Regression Results:")
 print("Accuracy:", accuracy_score(y_test_split, y_pred_logistic))
 print(classification_report(y_test_split, y_pred_logistic, target_names=twenty_train.target_names[:2]))
+```
